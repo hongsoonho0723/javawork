@@ -1,9 +1,5 @@
-package exam;
+package goods.exam;
 public class  StartView{
-	
-		
-	
-	
 	public static void main(String[] args) {
        String [][] data = new String [][]{
                      {"A01" , "새우깡" , "2500" , "짜고 맛나다."},  //---> Goods 
@@ -16,7 +12,7 @@ public class  StartView{
 
 		System.out.println("***** 프로그램 시작합니다. ********************");
 
-       MenuView mv  = new MenuView();//전역변수 초기화
+       MenuView mv  = new MenuView();//전역변수 초기화,    생성자 호출
 	   mv.printMenu( data );
 	}
 }

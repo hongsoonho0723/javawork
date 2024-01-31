@@ -1,4 +1,4 @@
-package exam;
+package goods.exam;
 import java.util.Scanner;
 /**
  키보드 입력을 받아 각 기능을 호출해줄 View
@@ -6,16 +6,18 @@ import java.util.Scanner;
 public class MenuView{
 
  private Scanner sc = new Scanner(System.in);
- private GoodsService service = new GoodsService(); //전역변수 초기화
+ private GoodsService service ; //전역변수 초기화
 
+  /*public MenuView() {
+	  System.out.println("MenuView.....");
+  }*/
+ 
   /**
     전체 메뉴를 출력하는 메소드 
   */
   public void printMenu(String [][] data){
-
       //전달 받은 초기치 데이터를 서비스에 전달해서 배열에 저장한다.
-      service.init(data);
-
+      service = new GoodsService(data);
 
 	  while(true){
          System.out.println("---------------------------------------------------------------------------");
@@ -37,9 +39,9 @@ public class MenuView{
 			 case 4 : 
 				 this.inputUpdate() ; break;
 			 case 9 : 
-				 System.out.println("다음에 또 이용해ㅜㅈ세요. 프로그램 종료합니다.");
+				 System.out.println("다음에 또 이용해주세요. 프로그램 종료합니다.");
 				 System.exit(0); 
-			 break;
+			 
 			 default: System.out.println("메뉴는 1~4 or 9 만 입력해주세요.");
 
 		 }//switch문
@@ -67,8 +69,7 @@ public class MenuView{
 
 
 	 //생성자를 추가하여 값을 전달하자(데이터 초기화)
-       Goods goods = new Goods();
-
+       Goods goods = new Goods(code,name,price,explain);
 	   int result = service.insert(goods);
 
 	   if(result==-1)
@@ -87,6 +88,7 @@ public class MenuView{
 	   String code = sc.nextLine();
 
 	  Goods goods = service.selectByCode( code );
+	  
 	  if(goods==null){
           EndView.printMessage(code+"는 잘못되어 검색할수 없습니다.");
 	  }else{
@@ -98,7 +100,7 @@ public class MenuView{
     수정하기 키보드 입력 
   */
   public void inputUpdate(){
-       //키보드입력 4개 받기 
+       //키보드입력 3개 받기 
 	   System.out.print("수정하려는 상품코드 > ");
 	   String code = sc.nextLine();
 
@@ -109,10 +111,9 @@ public class MenuView{
 	   String explain = sc.nextLine();
 
 	   //위 3개의 정보를 하나의 Goods객체로 만든다.
-	   Goods goods = new Goods(); //생성자를 추가하여 값을 전달하자(데이터 초기화)
-	  
+	   Goods goods = new Goods(code,  price, explain);//생성자를 추가하여 값을 전달하자(데이터 초기화)
 
-	   if(service.update(goods) ){
+	   if( service.update(goods)  ){
           EndView.printMessage("상품이 수정되었습니다.");
 	   }else{
           EndView.printMessage("상품이 수정되지않았습니다.");
