@@ -7,13 +7,19 @@ public class Goods{
 	private String name;//상품이름  null
 	private int price;//가격 0 
 	private String explain;//설명 null
-	public Goods() {};
+	
+	public Goods() {}
 	public Goods(String code, String name, int price, String explain) {
-		this.code = code;
+		this(code, price, explain);//인수 3개받는 생성자 호출
 		this.name = name;
+	}
+	
+	public Goods(String code, int price, String explain) {
+		this.code = code;
 		this.price = price;
 		this.explain = explain;
 	}
+	
 	public String getCode() {
 		return code;
 	}

@@ -9,8 +9,6 @@ public class GoodsService{
 	private Goods [] goodsArr = new Goods [10];
 	public static int count;//0 배열방에 저장 객체의 개수 
 
-
-
    /**
       초기치 데이터를 세팅하는 메소드
 	  String [][] data = new String [][]{
@@ -22,8 +20,11 @@ public class GoodsService{
 			 
 		};
    */
-   public void init(String [][] data){
-    
+   public GoodsService(String [][] data){
+     // 전달받은 data를 전역변수 배열에 세팅
+	   for(String [] row : data) { //row 는 {"A01" , "새우깡" , "2500" , "짜고 맛나다."}
+		   goodsArr[count++] = this.create(row);
+	   }
 
    }//메소드끝
 
@@ -32,9 +33,7 @@ public class GoodsService{
       Goods를 생성해서 값을 설정하고 생성된 Goos를 리턴하는 메소드 
    */
    private Goods create(String [] row){//{"A01" , "새우깡" , "2500" , "짜고 맛나다."}
-         
-
-		 return null;
+		 return new Goods(row[0], row[1], Integer.parseInt(row[2]), row[3]);
    }
 
 
@@ -49,24 +48,26 @@ public class GoodsService{
 			 -1이면 배열의 길이 벗어남
    */
    public int insert(Goods goods){
-
 	   // 배열의 길이 체크
-	   
+	   if(count == goodsArr.length)
+		   return -1;
 
 	   //중복체크 
-	 
-
+	  if( this.selectByCode(goods.getCode()) != null )
+          return 0;
 	  
-      return 0;
+	  //추가
+	  goodsArr[count++] = goods;
+      return 1;
    }
 
 
    /**
      전체검색
    */
-   public Goods[]  selectAll( ){
-     
-      return null;//
+   public Goods[]  selectAll(){
+	   
+      return goodsArr;//
    }
 
    /**
@@ -75,10 +76,15 @@ public class GoodsService{
 	           없으면 null 리턴
    */
    public Goods selectByCode(String code){
-       
+       for(int i=0; i< count ; i++) {
+    	  Goods goods =  goodsArr[i] ;
+    	   if( goods.getCode().toLowerCase().equals(code.toLowerCase()) ) {
+    		   return goods;
+    	   }
+       }
        
        return null;
-   }
+   }//
 
 
    /**
@@ -86,7 +92,23 @@ public class GoodsService{
 	@return : true이면 수정완료, false이면 수정실패
    */
    public boolean update(Goods goods){ //수정하려는 코드, 변경값 - 가격, 설명
-      
+      //인수로 전달된 코드에 해당하는 상품을 찾는다.
+	   Goods searchGoods = this.selectByCode( goods.getCode() );
+	   if(searchGoods != null) {
+		   //찾았다
+		   searchGoods.setPrice(goods.getPrice());
+		   searchGoods.setExplain(goods.getExplain());
+		   return true;
+	   }
+	   
        return false;
    }
 }
+
+
+
+
+
+
+
+
