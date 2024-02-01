@@ -1,11 +1,17 @@
-package sample01;
+package sample02;
 
-class FullTime {
+public abstract class Employee {
+
+	private int empNo;
+	private String eName;
+	private String job;
+	private int mgr;
+	private String hiredate;
+	private String deptName;
 	
-	FullTime() {};
-
-	public FullTime(int empNo, String eName, String job, int mgr, String hiredate, String deptName, int salary,
-			int bonus) {
+	Employee(){};
+			
+	public Employee(int empNo, String eName, String job, int mgr, String hiredate, String deptName) {
 		super();
 		this.empNo = empNo;
 		this.eName = eName;
@@ -13,30 +19,9 @@ class FullTime {
 		this.mgr = mgr;
 		this.hiredate = hiredate;
 		this.deptName = deptName;
-		this.salary = salary;
-		this.bonus = bonus;
-		
 	}
 
-	/*
-	@Override
-	public String toString() {
-	//	return this.empNo+this.eName+this.job+this.mgr+this.hiredate+this.deptName+this.salary+this.bonus;
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(empNo);
-		sb.append(" : ");
-		sb.append(eName);
-		sb.append(" : ");
-		
-		return sb.toString();
-		
-	}
-	
-	*/
-	
-	
-	private int empNo;
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -52,22 +37,12 @@ class FullTime {
 		builder.append(hiredate);
 		builder.append(", deptName=");
 		builder.append(deptName);
-		builder.append(", salary=");
-		builder.append(salary);
-		builder.append(", bonus=");
-		builder.append(bonus);
-		builder.append("]");
 		return builder.toString();
 	}
 
-	private String eName;
-	private String job;
-	private int mgr;
-	private String hiredate;
-	private String deptName;
-	private int salary;
-	private int bonus;
-
+	
+	
+	
 	public int getEmpNo() {
 		return empNo;
 	}
@@ -79,6 +54,7 @@ class FullTime {
 	public String geteName() {
 		return eName;
 	}
+
 
 	public void seteName(String eName) {
 		this.eName = eName;
@@ -115,26 +91,9 @@ class FullTime {
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
-
-	public int getSalary() {
-		return salary;
-	}
-
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
-
-	public int getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(int bonus) {
-		this.bonus = bonus;
-	}
 	
-	public void message() {
-		System.out.println(eName+"사원은 정규직입니다.");
-		
-	}
+	public abstract void message();
+	
+
 
 }

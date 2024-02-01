@@ -24,6 +24,27 @@ class PartTime {
 		this.timePay = timePay;
 
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PartTime [empNo=");
+		builder.append(empNo);
+		builder.append(", eName=");
+		builder.append(eName);
+		builder.append(", job=");
+		builder.append(job);
+		builder.append(", mgr=");
+		builder.append(mgr);
+		builder.append(", hiredate=");
+		builder.append(hiredate);
+		builder.append(", deptName=");
+		builder.append(deptName);
+		builder.append(", timePay=");
+		builder.append(timePay);
+		builder.append("]");
+		return builder.toString();
+	}
 
 	public int getEmpNo() {
 		return empNo;
