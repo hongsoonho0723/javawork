@@ -17,13 +17,13 @@ public class TestView {
 		} else {
 			System.out.println("회원계좌개수 : " + accountList.length);
 			for (AccountDto dto : accountList) {
-				System.out.print(dto.accountSeq + " , " + dto.accountNumber + " , " + dto.userSeq + " , ");
+				System.out.println(dto.accountSeq + " , " + dto.accountNumber + " , " + dto.userSeq + " , ");
 
 			}
 		}
 
 		System.out.println("***2. userSeq에 해당하는 고객의 정보 *************");
-		UserDto userDto = service.getUserDetail(200);
+		UserDto userDto = service.getUserDetail(100);
 		if (userDto != null) {
 			System.out.print(userDto.userSeq + " , " + userDto.name + " , " + userDto.email + " , ");
 			System.out.println(userDto.phone + " , " + userDto.isSleep);

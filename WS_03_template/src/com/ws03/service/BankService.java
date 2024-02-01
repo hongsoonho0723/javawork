@@ -1,24 +1,20 @@
 package com.ws03.service;
 
 /**
- * 고객과 계좌에 관련된 서비스
+ * 고객과 계좌에 관련된 서비스 
  * (Business Logic 을 처리하는 객체)
  * */
 
-import com.ws03.dto.AccountDto;
+import com.ws03.dto.AccountDto; 
 import com.ws03.dto.UserDto;
 
 public class BankService {
 	// final은 고정값= 값변경불가 (반드시 초기화 필수)
-	final int ACCOUNT_SIZE = 10;
-	/** 계좌 최대개수 */
-	final int USER_SIZE = 5;
-	/** 고객 최대개수 */
+	final int ACCOUNT_SIZE = 10;	/** 계좌 최대개수 */
+	final int USER_SIZE = 5;	/** 고객 최대개수 */
 
-	int ACCOUNT_CURRENT_SIZE;
-	/** 현재계좌의 개수 */
-	int USER_CURRENT_SIZE;
-	/** 현재 고객의 개수 */
+	int ACCOUNT_CURRENT_SIZE;	/** 현재계좌의 개수 */
+	int USER_CURRENT_SIZE;	/** 현재 고객의 개수 */
 
 	AccountDto[] accountList;
 	UserDto[] userList;
@@ -47,7 +43,8 @@ public class BankService {
 		accountList[ACCOUNT_CURRENT_SIZE++] = new AccountDto(5, "5555-55555", 250000, 200);
 
 		accountList[ACCOUNT_CURRENT_SIZE++] = new AccountDto(6, "6666-66666", 350000, 300);
-
+		
+		System.out.println("**********세팅완료**********");
 	}// 생성자 끝
 
 	/**
@@ -58,21 +55,29 @@ public class BankService {
 	 */
 
 	public AccountDto[] getAccountList(int userSeq) {
-		AccountDto[] userAccounts = new AccountDto[ACCOUNT_CURRENT_SIZE];
-		int count = 0;
+		//AccountDto[] userAccounts = new AccountDto[ACCOUNT_CURRENT_SIZE];
+		int searchAccountCount = 0;
 
 		for (int i = 0; i < ACCOUNT_CURRENT_SIZE; i++) {
 
-			if (this.accountList[i] != null && this.accountList[i].accountSeq == userSeq) {
-				userAccounts[count] = this.accountList[i];
-				count++;
+			if (this.accountList[i].userSeq == userSeq) {
+				searchAccountCount++;
 			}
 
 		}
+		if(searchAccountCount==0)
+		 return null;
 		
-		AccountDto[] result = new AccountDto[count];
-		
-		return result;
+		AccountDto serchAccountDtoList[] = new AccountDto[searchAccountCount];
+		int count=0;
+		for(int i =0; i<ACCOUNT_CURRENT_SIZE; i++) {
+			if(accountList[i].userSeq == userSeq) {
+				serchAccountDtoList[count++] = accountList[i];
+				
+			}
+			
+		}
+		return serchAccountDtoList;
 		
 		
 

@@ -5,10 +5,15 @@ package com.ws03.dto;
  */
 public class UserDto {
 
-	UserDto() {};
+	public int userSeq;
+	public String name;
+	public String email;
+	public String phone;
+	public boolean isSleep; //기본값 false
+	
+	public UserDto() {};
 
 	public UserDto(int userSeq, String name, String email, String phone, boolean isSleep) {
-		super();
 		this.userSeq = userSeq;
 		this.name = name;
 		this.email = email;
@@ -16,10 +21,6 @@ public class UserDto {
 		this.isSleep = isSleep;
 	}
 
-	public int userSeq;
-	public String name;
-	public String email;
-	public String phone;
-	public boolean isSleep;
+
 
 }
