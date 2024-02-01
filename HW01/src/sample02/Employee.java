@@ -25,18 +25,18 @@ public abstract class Employee {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("FullTime [empNo=");
 		builder.append(empNo);
-		builder.append(", eName=");
+		builder.append(" | ");
 		builder.append(eName);
-		builder.append(", job=");
+		builder.append(" | ");
 		builder.append(job);
-		builder.append(", mgr=");
+		builder.append(" | ");
 		builder.append(mgr);
-		builder.append(", hiredate=");
+		builder.append(" | ");
 		builder.append(hiredate);
-		builder.append(", deptName=");
+		builder.append(" | ");
 		builder.append(deptName);
+		builder.append(" | ");
 		return builder.toString();
 	}
 

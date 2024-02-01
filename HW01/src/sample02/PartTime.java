@@ -10,6 +10,23 @@ public class PartTime extends Employee {
 		super(empNo, eName, job, mgr, hiredate, deptName);
 		this.timePay = timePay;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		
+		String parentToString = super.toString();
+		builder.append(parentToString);
+		
+		builder.append(timePay);
+		return builder.toString();
+		
+	}
+	
+	
+	
+	
+	
 
 	public int getTimePay() {
 		return timePay;
@@ -21,7 +38,7 @@ public class PartTime extends Employee {
 
 	@Override
 	public void message() {
-		System.out.println("사원은 비정규직입니다");
+		System.out.println(super.geteName()+"사원은 비정규직입니다");
 	}
 	
 

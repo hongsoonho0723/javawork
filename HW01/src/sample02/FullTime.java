@@ -16,11 +16,23 @@ public class FullTime extends Employee {
 	}
 
 
-
-
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		
+		String parentToString = super.toString();
+		builder.append(parentToString);
+		
+		builder.append(salary);
+		builder.append(" | ");
+		builder.append(bonus);
+		return builder.toString();
+		
+	}
+	
 	@Override
 	public void message() {
-		System.out.println(super.geteName()+"사원은 정규직입니다");
+		System.out.println(geteName()+"사원은 정규직입니다");
 	}
 	
 
