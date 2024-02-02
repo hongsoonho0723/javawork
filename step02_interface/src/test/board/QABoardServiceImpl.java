@@ -22,4 +22,15 @@ public class QABoardServiceImpl implements BoardService {
 		return null;
 	}
 
+	
+	
+	@Override
+		public void replyInsert() {
+			System.out.println("QABoardServiceImpl의 replyInsert입니다..");
+		
+		
+		}
+	
+	
+	
 }

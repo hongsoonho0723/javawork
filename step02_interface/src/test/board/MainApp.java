@@ -42,6 +42,12 @@ public class MainApp {
 		//3.검색
 		Board searchBoard = boardService.selectbyBno(board.getBno());
 		
+		//4. 추가된 메소드 호출
+		boardService.replyInsert();
+		
+		//5.static 메소드 호출
+		BoardService.selectAll();
+		
 		
 	}
 	

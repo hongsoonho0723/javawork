@@ -34,12 +34,26 @@ public interface BoardService {
 	
 	
 	
+	/*
+	 * 답변기능 메소드 추가
+	 * 
+	 */
+	
+	default void replyInsert() {
+		
+		//기능
+		System.out.println("BoardService의 replyInsert입니다");
+		
+	};
+		
 	
 	
 	
 	
-	
-	
+	static void selectAll() {
+		
+		System.out.println("BoardService의 selectAll입니다!!!");
+	};
 	
 	
 	
