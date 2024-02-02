@@ -12,7 +12,6 @@ public abstract class Employee {
 	Employee(){};
 			
 	public Employee(int empNo, String eName, String job, int mgr, String hiredate, String deptName) {
-		super();
 		this.empNo = empNo;
 		this.eName = eName;
 		this.job = job;
@@ -24,7 +23,9 @@ public abstract class Employee {
 
 	@Override
 	public String toString() {
+		
 		StringBuilder builder = new StringBuilder();
+		
 		builder.append(empNo);
 		builder.append(" | ");
 		builder.append(eName);
@@ -37,9 +38,9 @@ public abstract class Employee {
 		builder.append(" | ");
 		builder.append(deptName);
 		builder.append(" | ");
+		
 		return builder.toString();
 	}
-
 	
 	
 	

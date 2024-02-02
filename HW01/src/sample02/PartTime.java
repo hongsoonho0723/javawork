@@ -15,19 +15,15 @@ public class PartTime extends Employee {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		
-		String parentToString = super.toString();
-		builder.append(parentToString);
+		//String parentToString = super.toString();
+		//builder.append(parentToString);
+		builder.append(super.toString());
 		
 		builder.append(timePay);
 		return builder.toString();
 		
 	}
 	
-	
-	
-	
-	
-
 	public int getTimePay() {
 		return timePay;
 	}

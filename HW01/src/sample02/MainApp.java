@@ -24,22 +24,32 @@ public class MainApp {
 		
 		System.out.println("**************** employee 정보 ***************");
 		
-
+/*
 		for(Employee el : employee) {
 			if(el instanceof FullTime) {
 				System.out.println(((FullTime) el).toString());
 				
 			}else{
 		        System.out.println(((PartTime) el).toString());
-		        System.out.println(el.toString());
+		      //  System.out.println(el.toString());
 		    }
 			
 			
 		}
 		
 		
+	*/		
+		
+		
+		for(Employee el : employee) {
+		
+		        System.out.println(el.toString());
+		   
 			
 			
+		}
+		
+		
 		
 
 		System.out.println();

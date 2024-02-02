@@ -7,10 +7,10 @@ public class FullTime extends Employee {
 	
 	public FullTime(){};
 	
-	public FullTime(int empNo, String eName, String job, int mgr, String hiredate, String deptName, int salary,
-			int bonus) {
+	public FullTime(int empNo, String eName, String job, int mgr, String hiredate, String deptName, int salary,	int bonus) {
 		
 		super(empNo, eName, job, mgr, hiredate, deptName);
+		
 		this.salary = salary;
 		this.bonus = bonus;
 	}
@@ -20,9 +20,9 @@ public class FullTime extends Employee {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		
-		String parentToString = super.toString();
-		builder.append(parentToString);
-		
+		//String parentToString = super.toString();
+		//builder.append(parentToString);
+		builder.append(super.toString());
 		builder.append(salary);
 		builder.append(" | ");
 		builder.append(bonus);
@@ -34,9 +34,6 @@ public class FullTime extends Employee {
 	public void message() {
 		System.out.println(geteName()+"사원은 정규직입니다");
 	}
-	
-
-	
 
 	public int getSalary() {
 		return salary;
