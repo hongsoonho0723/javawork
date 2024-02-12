@@ -41,6 +41,8 @@ public class MenuView{
 				break;
 			   case "6" : 
 		             // 정렬기능 호출....
+				   List<Student> sortList = service.sortByAge();
+				   EndView.printAll(sortList);
 					break;
 			   case "9" : 
                  System.exit(0);

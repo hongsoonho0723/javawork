@@ -1,6 +1,6 @@
 package ex0206.homework;
 
-public class Student {
+public class Student /* implements Comparable<Student>*/{
    private String sno;
    private String name;
    private int age;
@@ -56,5 +56,16 @@ public class Student {
 		builder.append("]");
 		return builder.toString();
 	}
-   
+	
+	/*
+	 * 현재 객체와 인수로 전달 객체를 비교
+	 * @return : 음수 , 0 , 양수
+	 */
+	
+	/*
+	@Override
+	public int compareTo(Student o) {
+		return age - o.getAge();
+	}
+   */
 }

@@ -1,6 +1,8 @@
 package ex0206.homework;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
@@ -20,8 +22,16 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public boolean insert(Student st) {
-		list.add(st);
-		return true;
+		//추가 전 학번 중복 체크
+		
+		
+		if(this.selectBySno(st.getSno()) != null) {
+			return false;
+		}
+		
+		
+		
+		return list.add(st);
 	}
 
 	@Override
@@ -30,29 +40,72 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student selectBySno(String sno) {
-		// TODO Auto-generated method stub
+	public Student selectBySno(String sno) { //사용자가 입력한 학번이 전달
+		for(Student st: list) {
+			if(st.getSno().equals(sno)) {
+				return st;
+				
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public boolean delete(String sno) {
-		
-		
-		return true;
+		Student student = this.selectBySno(sno);
+		return list.remove(student);
 	}
 
 	@Override
 	public boolean update(Student student) {
-		// TODO Auto-generated method stub
-		return false;
+		Student searchedStudent = this.selectBySno(student.getSno());
+		if(searchedStudent == null)
+			return false;
+		
+		searchedStudent.setAge(student.getAge());
+		searchedStudent.setAddr(student.getAddr());
+		
+			return true;
+		
 	}
 
 	@Override
 	public List<Student> sortByAge() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		//정렬한 복사본 list 만들자
+		List<Student> sortList = new ArrayList<Student>(list);
+		
+		//자료구조 정렬 - Student 객체는 반드시 Comparable를 구현
+		//Collections.sort(list);
 
+		//Comarator 사용하기
+		//Student객체에 Comparble 구현은 할 필요없다
+		
+		Collections.sort(sortList , new Comparator<Student>() {
+			
+			@Override
+			public int compare(Student o1, Student o2) {
+				
+				return o2.getAge() - o1.getAge(); //내림차순
+			}
+			
+			
+		} );
+		
+		
+		return sortList;
+	}
+	
+}//클래스 끝
+/*class SortCompartorTest implements Comparator<Student>{
+	
+	//@return : 음수 , 0 , 양수
+	
+	@Override
+	public int compare(Student o1, Student o2) {
+		
+		return o2.getAge() - o1.getAge(); //내림차순
+	}
+	
 	
 }
+*/
