@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import mvc.dto.Electronics;
@@ -109,5 +111,26 @@ public class ElectronicsController {
 		SuccessView.printAll(sortList);
 
 	}
+	
+	
+	
+	public void saveObject() {
+		
+		try {
+			service.saveObject();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
 
 }

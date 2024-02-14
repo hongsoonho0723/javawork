@@ -45,6 +45,7 @@ public class MenuView {
 				break;
 			case "9":
 				System.out.println("프로그램을 종료합니다");
+				controller.saveObject();
 				System.exit(0);
 			default:
 				System.out.println("메뉴를 다시 선택해주세요!!!!");

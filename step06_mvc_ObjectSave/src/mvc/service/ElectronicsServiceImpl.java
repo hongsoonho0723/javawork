@@ -3,6 +3,8 @@ package mvc.service;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +33,7 @@ public class ElectronicsServiceImpl implements ElectronicsService {
 	 */
 	private ElectronicsServiceImpl() {
 		
-		FileInputStream fos = null;
+		FileInputStream fis = null;
 		
 		//save.txt문서가 존재하는지 체크한후
 		//없으면 ResourceBundle를 이용해서
@@ -40,13 +42,13 @@ public class ElectronicsServiceImpl implements ElectronicsService {
 		//로딩해서 list를 복원한다
 		
 		try {
-			fos = new FileInputStream("src/mvc.service/save.txt");
+			fis = new FileInputStream("C:\\Edu\\java\\javawork\\step06_mvc_ObjectSave\\src\\mvc\\service\\save.txt");
 		} catch (FileNotFoundException e) {
 			System.out.println("save.txt문서가 존재하지 않습니다");
 			
 		}
 	
-		if(fos == null)  {
+		if(fis == null)  {
 		
 			
 			
@@ -59,8 +61,22 @@ public class ElectronicsServiceImpl implements ElectronicsService {
 
 		}
 		System.out.println(list);
-	}
+	}else {
+		
+		try {
+		 FileInputStream fis1 = new FileInputStream("C:\\Edu\\java\\javawork\\step06_mvc_ObjectSave\\src\\mvc\\service\\save.txt");
 
+		 ObjectInputStream ois = new ObjectInputStream(fis1);
+		 
+		 list = (List<Electronics>) ois.readObject();
+		
+		 
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		 
+	}
+			//return list;
 	}
 	
 	
@@ -154,7 +170,7 @@ public class ElectronicsServiceImpl implements ElectronicsService {
 	
 	
 	@Override
-	public void saveObject() {
+	public void saveObject() throws FileNotFoundException, IOException {
 
 		//list를 save.txt에 저장한다
 		
@@ -162,31 +178,16 @@ public class ElectronicsServiceImpl implements ElectronicsService {
 		
 		
 		
-		try(ObjectOutputStream oos = 
-				new ObjectOutputStream(new FileOutputStream("src/mvc.service/save.txt"))){
+		ObjectOutputStream oos = 
+				new ObjectOutputStream(new FileOutputStream("C:\\Edu\\java\\javawork\\step06_mvc_ObjectSave\\src\\mvc\\service\\save.txt"));
 						
 			//List를 파일에 저장해보자
 			oos.writeObject(list);
-			
-			
-			
-			
-			
-			
+						
 			System.out.println("저장완료!~~~");
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
+				
+		oos.close();
 		
 		
 	}

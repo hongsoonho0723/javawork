@@ -1,5 +1,7 @@
 package mvc.service;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +76,7 @@ public interface ElectronicsService {
 	 * 
 	 */
 
-	public void saveObject();
+	public void saveObject() throws FileNotFoundException, IOException;
 
 
 
