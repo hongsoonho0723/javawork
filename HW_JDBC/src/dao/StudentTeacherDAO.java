@@ -58,24 +58,42 @@ public interface StudentTeacherDAO {
 	 * 3.  "구"를 인수로 전달받아 구에 거주하는 강사의 정보 검색
 	 *      select * from teacher  where 주소 like ?
 	 * */
-	public List<Teacher> getTeacherInfoByAddr(String gu) {
-		Connection con = null;
-		PreparedStatement ps = null;
-		
-		String sql ="select * from teacher  where 주소 like ?";
-		List<Teacher> list = new ArrayList<Teacher>();
-		//int result =0;
-		
-		try {
-		ps= con.prepareStatement(sql);
-		ps.setString(1, "+%gu%+");
-			result = ps.executeUpdate();
-		}finally {
-			DbManager.dbClose(null, ps);
-		}
-		return list;
-	};
-	
+	/*
+	  public List<Teacher> getTeacherInfoByAddr(String gu) { 
+	  Connection con = null;
+	  PreparedStatement ps = null;
+	  
+	  String sql ="select * from teacher  where 주소 like ?"; 
+	  List<Teacher> list =
+	  new ArrayList<Teacher>(); //int result =0;
+	  
+	  try { 
+	  ps= con.prepareStatement(sql); 
+	  ps.setString(1, "+%gu%+"); 
+	  result =
+	  ps.executeUpdate(); 
+	  }	finally { DbManager.dbClose(null, ps); 
+	  	} 
+	  return list; 
+	  };*/
+	 
+	/*
+	 * public List<Teacher> getTeacherInfoByAddr(String gu) { Connection con = null;
+	 * PreparedStatement ps = null; ResultSet rs = null; List<Teacher> list = new
+	 * ArrayList<Teacher>(); String sql = "SELECT * FROM teacher WHERE 주소 LIKE ?";
+	 * 
+	 * try { con = DbManager.getConnection(); ps = con.prepareStatement(sql);
+	 * ps.setString(1, "%" + gu + "%"); rs = ps.executeQuery();
+	 * 
+	 * while (rs.next()) { Teacher teacher = new Teacher(); // 결과에서 강사 정보를 추출하여
+	 * Teacher 객체에 설정 teacher.setTeacherName(rs.getString("teacher_name"));
+	 * teacher.setTeacherAddr(rs.getString("teacher_arrd")); // 나머지 필드도 필요에 따라 설정
+	 * 
+	 * list.add(teacher); } } catch (SQLException e) { e.printStackTrace(); // 오류 처리
+	 * 필요 } finally { DbManager.dbClose(con, ps, rs); }
+	 * 
+	 * return list; }
+	 */
 	
 	
 	/**
