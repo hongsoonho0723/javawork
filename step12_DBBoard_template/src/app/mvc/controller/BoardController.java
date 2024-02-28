@@ -34,17 +34,21 @@ public class BoardController {
      * */
 	public static void boardSelectByNo(int boardNo) {
 		
-		
 	}
 	
 	/**
 	 * subject에 인수로 전달된 word를 포함한 게시물 검색
 	 * */
 	public static void boardSelectBySubject(String word) {
-		
-		
+		 try {
+			   List<BoardDTO> list = boardService.boardSelectBySubject("word");
+			   SuccessView.selectPrint(list);
+			 }catch(SearchWrongException e) {
+				 FailView.errorMessage(e.getMessage());
+			 }
+		   
 	}
-	
+		
 	/**
 	 * 게시물 등록하기 
 	 * */
