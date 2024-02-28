@@ -9,10 +9,10 @@ public interface DbProperties {
 	//String URl = "jdbc:oracle:thin:@192.168.0.36:1521:xe";
 	//String USER_ID= "scott";
 	//String USER_PASS="TIGER";
-	//String USER_ID= "C##HONGSOONHO";
-	//String USER_PASS="SOONHO";
-	String USER_ID= "C##SOONHO";
-	String USER_PASS="soonho";
+	String USER_ID= "C##HONGSOONHO";
+	String USER_PASS="SOONHO";
+	//String USER_ID= "C##SOONHO";
+	//String USER_PASS="soonho";
 	
 	
 }

@@ -3,8 +3,6 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +18,14 @@ public interface StudentTeacherDAO {
 	public static List<Student> getGenderByWomen(){
 			//로드 연결 실행닫기
 			Connection con = null;
-			Statement st = null;
+			PreparedStatement ps = null;
 			ResultSet rs = null;
 			String sql = "select * from student where student_jumin like '%-2%'";
 			List<Student> list = new ArrayList<Student>();
 			try {
 				con = DbManager.getConnection();
-				st=con.createStatement();
-				rs = st.executeQuery(sql);
+				ps=con.prepareStatement(sql);
+				rs = ps.executeQuery();
 				while(rs.next()){
 					//열의 조회
 					 /* STUDENT_NUMBER NUMBER PRIMARY KEY,
@@ -46,7 +44,7 @@ public interface StudentTeacherDAO {
 				e.printStackTrace();
 				
 			}finally {
-				DbManager.dbClose(con, st ,rs);
+				DbManager.dbClose(con, ps ,rs);
 				
 			}
 			return list;
@@ -80,17 +78,19 @@ public interface StudentTeacherDAO {
 	/*
 	 * public List<Teacher> getTeacherInfoByAddr(String gu) { Connection con = null;
 	 * PreparedStatement ps = null; ResultSet rs = null; List<Teacher> list = new
-	 * ArrayList<Teacher>(); String sql = "SELECT * FROM teacher WHERE 주소 LIKE ?";
+	 * ArrayList<Teacher>(); String sql =
+	 * "SELECT * FROM teacher WHERE teacher_arrd LIKE ?";
 	 * 
 	 * try { con = DbManager.getConnection(); ps = con.prepareStatement(sql);
 	 * ps.setString(1, "%" + gu + "%"); rs = ps.executeQuery();
 	 * 
-	 * while (rs.next()) { Teacher teacher = new Teacher(); // 결과에서 강사 정보를 추출하여
-	 * Teacher 객체에 설정 teacher.setTeacherName(rs.getString("teacher_name"));
+	 * while (rs.next()) { Teacher teacher = new Teacher();
+	 * teacher.setTeacherName(rs.getString("teacher_name"));
 	 * teacher.setTeacherAddr(rs.getString("teacher_arrd")); // 나머지 필드도 필요에 따라 설정
 	 * 
-	 * list.add(teacher); } } catch (SQLException e) { e.printStackTrace(); // 오류 처리
-	 * 필요 } finally { DbManager.dbClose(con, ps, rs); }
+	 * list.add(teacher); } } catch (SQLException e) { e.printStackTrace(); }
+	 * finally { DbManager.dbClose(con, ps, rs); }
+	 * 
 	 * 
 	 * return list; }
 	 */
@@ -112,4 +112,34 @@ public interface StudentTeacherDAO {
 	 * 
 	 * */
 	public Teacher getTeacherInfoByNo(int teacherNo);
-}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}//dao 클래스끝
+
+
+
+
+
+
+
+
+
+
+
+
+
+
